@@ -2,13 +2,15 @@ import Link from "next/link";
 import React from "react";
 import { FaStar,FaCodeBranch,FaEye } from "react-icons/fa";
 async function fetchRepos() {
-  const respose = await fetch("https://api.github.com/users/SHAON1028/repos");
+  const response = await fetch("https://api.github.com/users/bradtraversy/repos");
   await new Promise((resolve) => setTimeout(resolve,1000));
-  const repos = await respose.json();
+  const repos = await response.json();
   return repos;
 }
 const ReposPage = async () => {
   const repos = await fetchRepos();
+  // console.log(repos)
+  // console.log(repos[1])
 
   return (
     <div className='repos-container'>
