@@ -1,6 +1,12 @@
 import './globals.css'
+import "bootstrap/dist/css/bootstrap.css";
 import { Poppins } from 'next/font/google'
 import Header from './components/Header'
+import CategorySidebar from './components/categorySidebar/categorySidebar';
+import Footer from './components/Footer';
+import Slider from './components/slider/Slider';
+import Slider2 from './components/slider2/Slider2';
+
 const popins = Poppins({
   weight: ['400','700'],
   subsets:['latin']
@@ -14,11 +20,21 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={popins.className}>
-        <Header/>
-        <main className="container">
-        {children}
-        </main>
+        <div className="d-flex ">
+          <div className="sticky">
+            <CategorySidebar />
+          </div>
+          <main className="w-100 mt-4 ms-3 me-3  ">
+            <div className="sticky">
+              <Header></Header>
+            </div>
+            <div className="min-vh-100">{children}</div>
+            <div className="">
+              <Footer></Footer>
+            </div>
+          </main>
+        </div>
       </body>
     </html>
-  )
+  );
 }
